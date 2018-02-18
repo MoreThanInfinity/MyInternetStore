@@ -1,0 +1,76 @@
+<div id='item-<%= item.id %>'>
+	<div class='row'>
+		<div class='col-lg-4'>
+			<%= link_to (image_tag (item.photo), class: 'img-responsive img-rounded center-block', id: 'normal-icon'), item_path(item) %>
+		</div>
+		<div class='col-lg-8' id='font-big'>
+			<div class='row'>
+				<div class='col-lg-4 text-right'>Name: </div>
+				<div class='col-lg-5 text-left'><%= item.name %> </div>
+				<div class='col-lg-3 text-left'>
+					<% if !current_user.voted_up_on?(item) %>
+		                <%= link_to like_item_path(item), id: "item-#{item.id}-like", method: :put, remote: true do %>
+		                    <i class='fa fa-thumbs-up fa-fw' ></i>
+		                <% end %>
+		            <% else current_user.voted_up_on?(item) %>
+		            	<%= link_to like_item_path(item), id: "item-#{item.id}-like", method: :put, remote: true do %>
+		                    <i class='fa fa-thumbs-up fa-flip-vertical fa-fw' ></i>
+		                <% end %>
+		            <% end %>
+	                <span id="item-<%= item.id %>-likesize" class='like-count'><%= item.get_likes.size %></span>
+	            
+	            </div>
+			</div>
+			<div class='row'>
+				<div class='col-lg-4 text-right'>Cost: </div>
+				<div class='col-lg-5 text-left'><%= item.cost %>$ </div>
+				<div class='col-lg-3 text-left'>
+	                <%= link_to new_comment_path(item_id: item.id), id: "new-comment-link", remote: true do %>
+	                    <i class='fa fa-pencil-square-o fa-fw' ></i>
+	                <% end %>
+	            </div>
+			</div>
+			<div class='row'>
+				<div class='col-lg-4 text-right'>In stock: </div>
+				<div class='col-lg-5 text-left'><%= item.availability %></div>
+				<div class='col-lg-3 text-left'>
+	                <%= link_to new_relation_path(item_id: item.id), id: "new-relation-link", remote: true do %>
+	                    <i class='fa fa-credit-card fa-fw' ></i>
+	                <% end %>
+	            </div>
+				
+			</div>
+			<% if current_user.id==1 %>
+			<div class="row">
+				<div class="col-lg-3 col-lg-offset-9">
+					<%= link_to edit_item_path(item), id: "edit-item-link", remote: true do %>
+	                    <i class='fa fa-pencil fa-fw' ></i>
+	                <% end %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-3 col-lg-offset-9">
+					<%= link_to item, method: :delete, id: "delete-item-link", data: {confirm: 'Are you sure?'}, remote: true do %>
+	                    <i class='fa fa-remove fa-fw' ></i>
+	                <% end %>
+				</div>
+			</div>
+			<% end %>
+		</div>
+	</div> 
+
+	<div class='row' id='out-text'>
+		<%= item.information %>
+	</div>
+	<div class="row">
+
+	<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#comments-<%= item.id %>" aria-expanded="false" aria-controls="comments-<%= item.id %>" id='few-margin'> Open comments </button><hr/>
+	</div>
+	<div class='collapse' id="comments-<%= item.id %>">
+		<div class='row'>
+			<% item.comments.each do |comment| %>
+				<%= render 'comments/comment', comment: comment %>
+			<% end %>
+		</div>
+	</div>
+</div>

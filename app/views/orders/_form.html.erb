@@ -1,0 +1,7 @@
+<div id="order-form" class='current-order' style='padding-top:100px;'>
+<%= simple_form_for @order, class: 'form-group row ', remote: true do |f| %>
+	<%= f.input :name, label: "New order", placeholder: 'Order name...', class: 'form-control' %>
+	<%= f.hidden_field :user_id, value: current_user.id %>
+	<%= f.button :submit, 'Create new order', class: "btn btn-success " %>
+<% end %>
+</div>

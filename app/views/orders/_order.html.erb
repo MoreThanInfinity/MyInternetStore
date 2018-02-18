@@ -1,0 +1,13 @@
+<div  class='current-order' id='order-<%= order.id %>'>
+	<div class='row'>
+	<h2>Order list</h2>
+		<div class='col-lg-8'><h3><%= order.name %></h3></div>
+		<div class='col-lg-4'><%= creating(order) %><br><%= updating(order) %></div>
+	</div>
+
+	<div class='row' id='relations'>
+		<% order.relations.each do |relation| %>
+			<%= render 'relations/relation', relation: relation %>
+		<% end %>
+	</div>
+</div>

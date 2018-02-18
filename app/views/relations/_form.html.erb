@@ -1,0 +1,10 @@
+<div id="relation-form">
+	<%= simple_form_for @relation, class: 'form-group row', remote: true do |f| %>
+		<%= f.input :quantity, label: false, as: :integer, class: 'form-control' %>
+		<%= f.input :message, label: false, placeholder: 'Some wishes...', class: 'form-control' %>
+		<%= f.hidden_field :item_id %>
+		<%= f.hidden_field :user_id, value: current_user.id %>
+		<%= f.input :order_id,:collection => @orders,:label_method => :name,:value_method => :id,:label => false ,:include_blank => false %>
+		<%= f.button :submit, class: "btn btn-success btn-block" %>
+	<% end %>
+</div>

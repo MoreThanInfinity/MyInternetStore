@@ -1,0 +1,29 @@
+<div class="row border">
+
+
+	<div class='col-lg-6' id='item-container' style='padding-right:50px;'>
+		<h2 class='text-center'>Store page</h2>
+		<% if current_user.id==1 %>
+			<div class='col-lg-12'>
+				<%= link_to 'Add product', new_item_path, class: 'btn btn-lg btn-block btn-success', id: 'new_item_link', remote: true %>	
+			</div>
+		<% end %>
+		<div id='items'>
+			<% if !@items.empty? %>
+				<% @items.each do |item| %>
+					<%= render 'item', item: item %>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+
+
+	<div class='col-lg-6' id='order-container'>
+		<div  class='current-order'>
+			<h1 class='text-center'>Here could be your advertisement</h1>
+		</div>
+		
+	</div>
+
+
+</div>

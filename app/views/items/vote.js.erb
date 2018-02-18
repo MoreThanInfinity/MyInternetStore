@@ -1,0 +1,5 @@
+$("#item-<%= @item.id %>-likesize").html("<%= @item.get_likes.size %>");
+$("#item-<%= @item.id %>-like").click(function(event){    
+	var self = $("#item-<%= @item.id %>-like").children('i') 
+	self.toogleClass('fa-flip-vertical')
+})

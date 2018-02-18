@@ -1,0 +1,2 @@
+$('#comment-form').remove();
+$('#comments-<%= @item.id %>').prepend('<%= j (render @comment) %>');

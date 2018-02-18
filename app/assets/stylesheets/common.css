@@ -1,0 +1,65 @@
+#mini-icon {
+	height: 70px;
+	width: 70px;
+}
+
+#c-u-time {
+	font-size: 70%;
+	color: grey;
+}
+
+#normal-icon {
+	height: 200px;
+	width: 200px;
+}
+
+.like-count { 
+	color: #008080;
+}
+
+body {
+	padding-top: 50px;
+	padding-left: 30px;
+	padding-right: 40px;
+
+}
+
+#font-middle {
+	font-size: 120%;
+}
+
+#font-big {
+	font-size: 160%;
+}
+
+.form-padding {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	padding-right: 50px;
+	padding-left: 15px;
+
+}
+
+#items {
+	padding-top: 80px;
+}
+
+#black-link {
+	color: black;
+	font-weight: bold;
+	font-size: 120%;
+}
+
+#few-padding {
+	padding-top:20px;
+}
+
+#few-margin {
+	margin-top:20px;
+}
+
+#grey-link {
+	color: grey;
+	font-weight: bold;
+	font-size: 130%;
+}

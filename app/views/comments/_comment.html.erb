@@ -1,0 +1,52 @@
+<div id="comment-<%= comment.id %>">
+	<div class='row'>
+		<div class='col-lg-3'>
+			<%= link_to (image_tag (comment.user.avatar), class: 'img-responsive center-block img-circle', id: 'mini-icon'), user_path(comment.user) %>
+			
+		</div>
+		<div class='col-lg-9'>
+			<div class='row'>
+				<div class='col-lg-8 text-left'>
+					<%= link_to comment.user.name, user_path(comment.user), id: 'black-link' %>	
+				</div>
+				<div class='col-lg-4 text-right' id='c-u-time'>
+					<%= creating(comment) %><br>
+					<%= updating(comment) %>
+				</div><hr/>
+			</div>
+
+			<div class='row'>
+				<div class='col-lg-5' >
+					<%= image_tag comment.attachment, class: 'img-responsive center-block img-rounded', id: 'normal-icon' %>
+					<div class="row" id='few-padding'>
+						<div class="col-lg-4">
+							<%= link_to edit_comment_path(comment), remote: true do %>
+								<i class='fa fa-pencil fa-lg'></i>
+							<% end %>
+						</div>
+						<div class="col-lg-4">
+							<% if !current_user.voted_up_on?(comment) %>
+				                <%= link_to like_comment_path(comment), id: "comment-#{comment.id}-like", method: :put, remote: true do %>
+				                    <i class='fa fa-thumbs-up fa-lg' ></i>
+				                <% end %>
+				            <% else current_user.voted_up_on?(comment) %>
+				            	<%= link_to like_comment_path(comment), id: "comment-#{comment.id}-like", method: :put, remote: true do %>
+				                    <i class='fa fa-thumbs-up fa-flip-vertical fa-lg' ></i>
+				                <% end %>
+				            <% end %>
+			                <span id="comment-<%= comment.id %>-likesize" class='like-count'><%= comment.get_likes.size %></span>
+						</div>
+						<div class="col-lg-4">
+							<%= link_to comment, method: :delete, data: {confirm: "Delete your comment?"}, remote: true do %>
+								<i class='fa fa-remove fa-lg'></i>
+							<% end %>
+						</div>
+					</div>
+				</div>
+				<div class='col-lg-7'>
+					<%= comment.content %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div><hr>

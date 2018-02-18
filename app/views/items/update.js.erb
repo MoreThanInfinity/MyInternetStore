@@ -1,0 +1,4 @@
+$('#item-form').remove();
+$('#item-<%= @item.id %>').show();
+$('#item-<%= @item.id %>').html('<%= j render @item %>');
+

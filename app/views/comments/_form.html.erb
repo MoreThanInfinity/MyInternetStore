@@ -1,0 +1,16 @@
+<div class='form-padding' id='comment-form'>
+	<%= simple_form_for @comment, class: 'form-group row', remote: true do |f| %>
+		<%= f.input :content, label: false, placeholder: 'Enter comment...', class: 'form-control' %>
+		<%= f.hidden_field :user_id, value: current_user.id  %>
+		<%= f.hidden_field :item_id  %>
+		
+		<div class="row ">
+		<label class="btn btn-primary btn-block" for="comment-selector">
+		<%= f.file_field :attachment, id: "comment-selector", style: 'display: none;'  %>
+		<p style='font-size: 130%'>Load Image<p>
+		</label></div>
+		<div class="row">
+		<%= f.button :submit, class: 'btn btn-success btn-lg btn-block' %>
+		</div>
+	<% end %>
+</div>

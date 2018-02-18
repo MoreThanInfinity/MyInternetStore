@@ -1,0 +1,46 @@
+<div class='row'>
+<% if current_user %>
+	<div class='col-lg-12  text-center'>
+		<h1>My profile</h1><hr/>
+	
+		<div class='row'>
+			<div class='col-lg-6  text-center'>
+				<% if current_user %>
+
+					<h3><strong ><%= current_user.name %></strong><hr/></h3>
+					<%= image_tag (current_user.avatar), class: 'img-responsive center-block img-rounded' %>
+				<% end %>
+			</div>
+
+			<div class='col-lg-6  text-center'>
+				
+
+
+					<h3><strong >Some information about user</strong><hr/></h3>
+
+					<div class="row" id='font-middle' >
+						<strong><div class="col-lg-4 text-right">Email:</div></strong>
+						<div class="col-lg-8 text-left"><%= current_user.email %></div>
+					</div>
+					<div class="row" id='font-middle'>
+						<strong><div class="col-lg-4 text-right">Adress:</div></strong>
+						<div class="col-lg-8 text-left"><%= current_user.adress %></div>
+					</div>
+					<div class="row" id='font-middle'>
+						<strong><div class="col-lg-4 text-right">Phone number:</div></strong>
+						<div class="col-lg-8 text-left"><%= current_user.phone_number %></div>
+					</div><hr/>
+
+				
+					<div class='row'>
+						<div class='col-md-8 col-md-offset-2 text-center' id='user-edit-btn'><%= link_to 'Change information or avatar', edit_user_path(current_user), class: 'btn btn-lg btn-success btn-block', remote: true %></div>
+					</div>
+					<div class="row" >
+						<div class='col-lg-7 col-lg-offset-2' id='user-info'></div>
+					</div>
+				
+			</div>
+		</div>
+	</div>
+<% end %>
+</div>

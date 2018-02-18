@@ -1,0 +1,14 @@
+<div  class='form-padding' id='item-form'>
+<%= simple_form_for @item, class: 'form-group ', remote: true do |f| %>
+	<%= f.input :name, label: false, placeholder: 'Name of product...', class: 'form-control' %>
+	<%= f.input :cost, label: false, placeholder: 'Price of product...', class: 'form-control' %>
+	<%= f.input :information, label: false, placeholder: 'Some information...', class: 'form-control' %>
+	<%= f.hidden_field :availability, value: true %>
+
+	<label class="btn btn-primary btn-block" for="item-selector">
+	<%= f.file_field :photo, id: "item-selector", style: 'display: none;'  %>
+	<h4><p>Load Image<p></h4>
+	</label>
+	<%= f.button :submit, class: "btn btn-lg btn-success btn-block" %>
+<% end %>
+</div>

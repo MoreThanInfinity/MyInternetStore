@@ -1,0 +1,3 @@
+$('#comment-form').remove();
+$('#comment-<%= @comment.id %>').show();
+$('#comment-<%= @comment.id %>').html('<%= j render @comment %>');

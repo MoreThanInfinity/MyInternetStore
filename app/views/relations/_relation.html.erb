@@ -1,0 +1,34 @@
+<div id='relation-<%= relation.id %>' style='margin-top: 50px;'>
+	<div class='row'>
+		<div class='col-lg-4'>
+			<%= link_to (image_tag (relation.item.photo), id: 'mini-icon'), item_path(relation.item) %>
+		</div>
+		<div class='col-lg-8'>
+			<div class='row'>
+				<div class='col-lg-7'><%= link_to relation.item.name, item_path(relation.item) %>
+				</div>
+				<div class='col-lg-4 text-right' id='c-u-time'>
+					<%= creating(relation) %>
+				</div>
+				<div class='col-lg-1 text-center'>
+					<%= link_to relation, method: :delete, data: {confirm: 'Delete from order?'}, remote: true do %>
+					<i class='fa fa-lg fa-remove'></i>
+					<% end %>
+				</div><hr>
+			</div>
+			<div class='row'>
+				<div class='col-lg-2 text-right' >Quantity: </div>
+				<div class='col-lg-4'><%= relation.quantity %></div>
+				<div class='col-lg-3 text-right'>Cost: </div>
+				<div class='col-lg-3'><%= relation.item.cost %></div>
+			</div>
+			<div class="row">
+				<div class="col-lg-3 col-lg-offset-6 text-right">Total price:</div>
+				<div class='col-lg-3'><%= (relation.quantity)*(relation.item.cost) %></div>
+			</div>		
+		</div>
+	</div>
+	<div class='row'>
+		<div><% relation.message %></div>
+	</div>
+</div>
