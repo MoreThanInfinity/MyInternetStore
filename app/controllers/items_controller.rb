@@ -1,8 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item, only: [:show, :edit, :update, :destroy, :vote]
-  #before_action :require_permission, except: [:index]
-
   def index
     @items=Item.all.page(params[:page]).order('created_at DESC')
   end

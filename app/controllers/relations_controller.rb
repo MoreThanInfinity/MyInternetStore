@@ -8,9 +8,6 @@ class RelationsController < ApplicationController
     @relations=Relation.all.page(params[:page]).order('created_at DESC')
   end
 
-  #def edit
-  #end
-
   def new
     @relation=Relation.new(item_id: params[:item_id])
     @orders=current_user.orders
@@ -27,16 +24,6 @@ class RelationsController < ApplicationController
       end
     end
   end
-
-  #def update
-  #  respond_to do |format|
-  #    if @relation.update(relation_params)
-  #      format.js
-  #    else
-  #      format.html{render :new, notice: "#{@relation.errors.full_messages}"}
-  #    end
-  #  end
-  #end
 
   def destroy
     @relation.destroy
@@ -59,5 +46,4 @@ class RelationsController < ApplicationController
         redirect_to items_path, notice: "You cant do this!"
       end
     end
-
 end

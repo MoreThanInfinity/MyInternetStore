@@ -2,7 +2,6 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_comment, only: [:show, :edit, :update, :destroy, :vote]
   before_action :require_permission, only: [:edit, :update, :destroy ]
-#  before_action :set_item, only: [:new, :create]
 
   def index
     @comments=Comment.all.page(params[:page]).order('created_at DESC')
@@ -31,8 +30,6 @@ class CommentsController < ApplicationController
         format.js
       end
     end
-
-#    @comment.item=@item
   end
 
   def update
@@ -75,9 +72,4 @@ class CommentsController < ApplicationController
         redirect_to items_path, notice: "You cant do this!"
       end
     end
-
-#    def set_item
-#      @item=Item.find(params[:item_id])
-#    end
-
 end

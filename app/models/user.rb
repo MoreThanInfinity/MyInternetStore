@@ -2,7 +2,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-
   acts_as_voter
   mount_uploader :avatar, AvatarUploader
   has_many :comments
